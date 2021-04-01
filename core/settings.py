@@ -1,9 +1,6 @@
 import os
-
-# Reference: https://dev.to/vladyslavnua/how-to-protect-your-django-secret-and-oauth-keys-53fl
-# For handling the environment variables from .env file
 from dotenv import load_dotenv
-load_dotenv()
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -176,8 +173,8 @@ SOCIALACCOUNT_PROVIDERS = {
 
 
 ACCOUNT_AUTHENTICATION_METHOD = ("username")
-#ACCOUNT_EMAIL_VERIFICATION = ("none")
-ACCOUNT_EMAIL_VERIFICATION = ('mandatory')
+ACCOUNT_EMAIL_VERIFICATION = ("none")
+#ACCOUNT_EMAIL_VERIFICATION = ('mandatory')
 ACCOUNT_SIGNUP_PASSWORD_VERIFICATION  = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = True
@@ -196,5 +193,3 @@ EMAIL_HOST_USER = DEFAULT_FROM_EMAIL = SERVER_EMAIL = '--email--'
 EMAIL_HOST_PASSWORD = '--pass--'
 EMAIL_PORT = 587
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-
