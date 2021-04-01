@@ -173,7 +173,7 @@ SOCIALACCOUNT_PROVIDERS = {
 ACCOUNT_FORMS = {
     'login': 'allauth.account.forms.LoginForm',
     #'signup': 'allauth.account.forms.SignupForm',
-    "signup": "spybook.users.forms.SpyBookSignupForm", # custom signup form
+    "signup": "users.forms.MyCustomSignupForm", # custom signup form
     'add_email': 'allauth.account.forms.AddEmailForm',
     'change_password': 'allauth.account.forms.ChangePasswordForm',
     'set_password': 'allauth.account.forms.SetPasswordForm',
