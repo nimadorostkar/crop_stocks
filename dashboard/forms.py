@@ -1,4 +1,5 @@
 from django import forms
+from allauth.account.forms import SignupForm
 from django.contrib.auth.models import User
 from .models import Profile, Payment
 from django.forms import ModelForm

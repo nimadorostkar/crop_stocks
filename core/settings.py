@@ -35,9 +35,6 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.twitter'
 ]
 
 
@@ -175,14 +172,14 @@ SOCIALACCOUNT_PROVIDERS = {
 
 ACCOUNT_FORMS = {
     'login': 'allauth.account.forms.LoginForm',
-    'signup': 'allauth.account.forms.SignupForm',
+    #'signup': 'allauth.account.forms.SignupForm',
+    "signup": "spybook.users.forms.SpyBookSignupForm", # custom signup form
     'add_email': 'allauth.account.forms.AddEmailForm',
     'change_password': 'allauth.account.forms.ChangePasswordForm',
     'set_password': 'allauth.account.forms.SetPasswordForm',
     'reset_password': 'allauth.account.forms.ResetPasswordForm',
     'reset_password_from_key': 'allauth.account.forms.ResetPasswordKeyForm',
     'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
-    "signup": "spybook.users.forms.SpyBookSignupForm",
 }
 
 
