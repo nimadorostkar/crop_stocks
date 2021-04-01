@@ -21,7 +21,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'grappelli',  # Django Grappelli , A BEAUTIFUL CONTENT MANAGEMENT  ---  https://grappelliproject.com
+    'grappelli',  # Admin Grappelli  ---  https://grappelliproject.com
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.twitter'
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
