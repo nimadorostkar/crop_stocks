@@ -47,13 +47,14 @@ class UserForm(UserCreationForm):
 
 
 
-
 class MyCustomSignupForm(SignupForm):
-    def __init__(self, *args, **kwargs):
-        super(MyCustomSignupForm, self).__init__(*args, **kwargs)
-        self.fields['organization'] = forms.CharField(required=True)
-    def save(self, request):
+	def __init__(self, *args, **kwargs):
+		super(MyCustomSignupForm, self).__init__(*args, **kwargs)
+		self.fields['organization'] = forms.CharField(required=True)
+		self.fields['bank'] = forms.CharField(required=True)
+	def save(self, request):
         organization = self.cleaned_data.pop('organization')
+		bank = self.cleaned_data.pop('bank')
         ...
         user = super(MyCustomSignupForm, self).save(request)
 
