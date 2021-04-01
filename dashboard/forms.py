@@ -53,16 +53,18 @@ class MyCustomSignupForm(SignupForm):
 		self.fields['organization'] = forms.CharField(required=True)
 		self.fields['bank'] = forms.CharField(required=True)
 	def save(self, request):
-        organization = self.cleaned_data.pop('organization')
+		organization = self.cleaned_data.pop('organization')
 		bank = self.cleaned_data.pop('bank')
-        ...
-        user = super(MyCustomSignupForm, self).save(request)
+		...
+		user = super(MyCustomSignupForm, self).save(request)
+
 
 
 
 
 
 '''
+
 # SpyBookSignupForm inherits from django-allauth's SignupForm
 class SpyBookSignupForm(SignupForm):
 
@@ -82,8 +84,8 @@ class SpyBookSignupForm(SignupForm):
         user.type = self.cleaned_data["type"]
         # Save the user's type to their database record
         user.save()
-'''
 
+'''
 
 
 #------------------------------- Forms End -----------------------------------
