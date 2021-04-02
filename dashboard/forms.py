@@ -21,18 +21,7 @@ class PaymentForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
 	class Meta:
 		model = Profile
-		fields = [
-        'father_name',
-        'identity_number',
-        'national_code',
-		'phone',
-        'address',
-        'bank_name',
-        'account_holder',
-        'cardـnumber',
-        'user_photo',
-        'signature',
-        'personalـphoto']
+		fields = '__all__'
 
 
 
