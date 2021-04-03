@@ -46,7 +46,7 @@ class MyCustomSignupForm(SignupForm):
 		bank = self.cleaned_data.pop('bank')
 		...
 		user = super(MyCustomSignupForm, self).save(request)
-'''
+
 
 
 class MyCustomSignupForm(SignupForm):
@@ -65,7 +65,7 @@ class MyCustomSignupForm(SignupForm):
 
 
 
-'''
+
 
 # SpyBookSignupForm inherits from django-allauth's SignupForm
 class SpyBookSignupForm(SignupForm):
