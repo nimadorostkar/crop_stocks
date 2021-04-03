@@ -79,8 +79,13 @@ class Payment(models.Model):
 
 #------------------------------------------------------------------------------
 class Profile(models.Model):
-  user = models.OneToOneField(User, on_delete=models.CASCADE,unique=True,related_name='profile',verbose_name = "کاربر")
-  #first_name = models.OneToOneField(User.first_name, on_delete=models.CASCADE,unique=True,verbose_name = "نام")
+  #user = models.OneToOneField(User, on_delete=models.CASCADE,unique=True,related_name='profile',verbose_name = "کاربر")
+  username = models.CharField(max_length=50)
+  email = models.CharField(max_length=50)
+  password1 = models.CharField(max_length=50)
+  password2 = models.CharField(max_length=50)
+  first_name = models.CharField(max_length=50,verbose_name = "نام")
+  last_name = models.CharField(max_length=50,verbose_name = "نام خانوادگی")
   father_name = models.CharField(max_length=50,null=True, blank=True,verbose_name = " نام پدر  ")
   phone = models.CharField(max_length=50,null=True, blank=True,verbose_name = " شماره تماس  ")
   identity_number = models.CharField(max_length=50,unique=True,null=True, blank=True,verbose_name = "شماره شناسنامه")
@@ -118,6 +123,18 @@ class Profile(models.Model):
 
   def __str__(self):
     return "پروفایل : " + str(self.user)
+
+  def save(self, commit=True):
+        user = super(Profile, self).save()
+        user.set_password(self.cleaned_data["password1"])
+        user.save()
+        profile, created = Profile.objects.update_or_create(user=user)
+        profile.username = self.cleaned_data["username"]
+        profile.first_name = self.cleaned_data["first_name"]
+        profile.last_name = self.cleaned_data["last_name"]
+        profile.email = self.cleaned_data["email"]
+        profile.save()
+        return user
 
 
 
