@@ -80,6 +80,7 @@ class Payment(models.Model):
 #------------------------------------------------------------------------------
 class Profile(models.Model):
   user = models.OneToOneField(User, on_delete=models.CASCADE,unique=True,related_name='profile',verbose_name = "کاربر")
+  #first_name = models.OneToOneField(User.first_name, on_delete=models.CASCADE,unique=True,verbose_name = "نام")
   father_name = models.CharField(max_length=50,null=True, blank=True,verbose_name = " نام پدر  ")
   phone = models.CharField(max_length=50,null=True, blank=True,verbose_name = " شماره تماس  ")
   identity_number = models.CharField(max_length=50,unique=True,null=True, blank=True,verbose_name = "شماره شناسنامه")
