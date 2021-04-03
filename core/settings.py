@@ -171,8 +171,8 @@ SOCIALACCOUNT_PROVIDERS = {
 
 ACCOUNT_FORMS = {
     'login': 'allauth.account.forms.LoginForm',
-    #'signup': 'allauth.account.forms.SignupForm',
-    'signup': 'dashboard.forms.ProfileForm', # custom signup form
+    'signup': 'allauth.account.forms.SignupForm',
+    #'signup': 'dashboard.forms.ProfileForm',            # custom signup form -- https://github.com/pennersr/django-allauth/blob/master/allauth/templates/account/signup.html
     'add_email': 'allauth.account.forms.AddEmailForm',
     'change_password': 'allauth.account.forms.ChangePasswordForm',
     'set_password': 'allauth.account.forms.SetPasswordForm',
