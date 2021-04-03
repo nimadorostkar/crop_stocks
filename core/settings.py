@@ -169,6 +169,7 @@ SOCIALACCOUNT_PROVIDERS = {
 
 
 
+
 ACCOUNT_FORMS = {
     'login': 'allauth.account.forms.LoginForm',
     'signup': 'allauth.account.forms.SignupForm',
