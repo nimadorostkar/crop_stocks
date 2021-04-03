@@ -1,7 +1,7 @@
-{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name %}Hello from {{ site_name }}!{% endblocktrans %}
+{% load i18n %}{% autoescape off %}{% blocktrans %}Hello from Crop Team!{% endblocktrans %}
 
 {% block content %}{% endblock %}
 
-{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Thank you for using {{ site_name }}!
+{% blocktrans %}Thank you for using Crop!
 {{ site_domain }}{% endblocktrans %}
 {% endautoescape %}
