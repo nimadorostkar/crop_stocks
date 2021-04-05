@@ -1,6 +1,4 @@
 import os
-from dotenv import load_dotenv
-
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -34,7 +32,6 @@ INSTALLED_APPS = [
     # Third Party - 1) All Auth
     'allauth',
     'allauth.account',
-    'allauth.socialaccount'
 ]
 
 
@@ -139,33 +136,6 @@ STATICFILES_DIRS = [
 
 # Required for all-auth
 SITE_ID = 1
-
-
-# Provider specific settings for all-auth apps
-SOCIALACCOUNT_PROVIDERS = {
-    'facebook': {
-        'APP': {
-            'client_id': str(os.getenv('FACEBOOK_CLIENT_ID')),
-            'secret': str(os.getenv('FACEBOOK_SECRET_KEY')),
-            'key': ''
-        }
-    },
-    'google': {
-        'APP': {
-            'client_id': '',
-            'secret': '',
-            'key': ''
-        }
-    },
-    'twitter': {
-        'APP': {
-            'client_id': str(os.getenv('TWITTER_CLIENT_ID')),
-            'secret': str(os.getenv('TWITTER_SECRET_KEY')),
-            'key': ''
-        }
-    }
-}
-
 
 
 
