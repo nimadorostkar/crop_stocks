@@ -55,9 +55,8 @@ class Ticket(models.Model):
     descriptions = models.TextField(max_length=800,null=True, blank=True,verbose_name = "توضیحات")
     CHOICES1 = ( ('New Ticket','New Ticket'), ('Answered','Answered') )
     status = models.CharField(max_length=20,choices=CHOICES1,default='New Ticket',verbose_name = "وضعیت")
-
-    #CHOICES2 = ( ('🟢پاسخ',' 🟢پاسخ '), (' 🔴تیکت  ',' 🔴تیکت ') )
-    #status = models.CharField(max_length=20,choices=CHOICES2,default='🔴تیکت',verbose_name = "وضعیت")
+    CHOICES2 = ( ('🔴New','🔴New'), ('Answered','Answered') )
+    case = models.CharField(max_length=20,choices=CHOICES2,default='🔴New',verbose_name = "حالت")
     updated_on = models.DateTimeField(auto_now= True)
     created_on = models.DateTimeField(auto_now_add=True)
 
