@@ -1,4 +1,4 @@
-from .models import Profile, Notice, Payment, Submitted_files
+from .models import Profile, Notice, Payment, Submitted_files, Ticket
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext_lazy as _
 from .forms import ProfileForm, UserForm, PaymentForm

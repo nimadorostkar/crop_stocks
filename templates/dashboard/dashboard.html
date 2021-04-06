@@ -552,19 +552,34 @@
 
 
                             <div class="row">
-                              {% for Submitted_files in submitted_files %}
+                              {% for Ticket in ticket %}
                                 <div class="col-md-4 col-sm-12">
                                     <div class="card">
                                       <div align="center">
                                         <br>
-                                        <p> {{ Submitted_files.title }}  </p>
-                                        <a href="{{ Submitted_files.file.url }}" download><button class="btn btn-outline-warning mr-3">Download</button></a>
-                                        <hr> <p style="color:#f56f11;"> {{ Submitted_files.updated_on }}  </p>
+                                        <p> {{ Ticket.status }}  </p>
+                                        <hr>
+                                        <p> {{ Ticket.title }}  </p>
+                                        <hr>
+                                        <p> {{ Ticket.descriptions }}  </p>
+                                        <p style="color:#f56f11;"> {{ Ticket.updated_on }}  </p>
                                       </div>
                                     </div>
                                 </div>
                               {% endfor %}
                            </div> <!-- end row-->
+
+
+                           <div class="row">
+                               <div class="col-lg-12">
+                                   <div class="card">
+                                       <div class="card-body">
+                                         <a class="btn btn-success btn-block" href="#" target="_blank"> <i class="fa fa-plus"></i> &nbsp; ارسال تیکت </a>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                           <!-- end row -->
 
 
 
