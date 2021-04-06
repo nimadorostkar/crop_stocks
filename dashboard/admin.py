@@ -22,6 +22,12 @@ class Money_reqAdmin(admin.ModelAdmin):
 class ProfileAdmin(admin.ModelAdmin):
 	list_display = ('user_name', 'image_tag','national_code','phone','address')
 
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('id', 'customer', 'order_date',)
+class TransactionAdmin(admin.ModelAdmin):
+    list_display = ('id', 'invoice', 'amount', 'transaction_date', 'status')
+class InvoiceAdmin(admin.ModelAdmin):
+    list_display = ('id', 'order',)
 
 
 admin.site.register(models.Notice,NoticeAdmin)
@@ -30,5 +36,9 @@ admin.site.register(models.Ticket,TicketAdmin)
 admin.site.register(models.Money_req,Money_reqAdmin)
 admin.site.register(models.Payment,PaymentAdmin)
 admin.site.register(models.Profile,ProfileAdmin)
+
+admin.site.register(models.Order, OrderAdmin)
+admin.site.register(models.Invoice, InvoiceAdmin)
+admin.site.register(models.Transaction, TransactionAdmin)
 
 admin.site.register(LogEntry)
