@@ -551,24 +551,26 @@
                             <!-- end page title -->
 
 
-                            <div class="row">
-                              {% for Ticket in ticket %}
-                                <div class="col-md-4 col-sm-12">
-                                    <div class="card">
-                                      <div align="center">
-                                        <br>
-                                        <p> {{ Ticket.status }}  </p>
-                                        <hr>
-                                        <p> {{ Ticket.title }}  </p>
-                                        <hr>
-                                        <p> {{ Ticket.descriptions }}  </p>
-                                        <p style="color:#f56f11;"> {{ Ticket.updated_on }}  </p>
-                                      </div>
-                                    </div>
-                                </div>
-                              {% endfor %}
-                           </div> <!-- end row-->
 
+
+                              <br><br>
+                            {% for Ticket in ticket %}
+                              <div class="row">
+                                  <div class="col-lg-12">
+                                      <div class="card">
+                                          <div class="card-body">
+                                               <h4 class="card-title mb-4">{{ Ticket.title }} <small style="color:#f56f11;"> {{ Ticket.status }}  </small> </h4>
+                                               <div class="table-responsive">
+                                                  <p style="text-align:right; direction:rtl" class="text-muted mb-0">{{ Ticket.descriptions|linebreaks }}</p>
+                                                  <br>
+                                                  <p  style="text-align:left"> <small> {{ Ticket.updated_on }} </small> </p>
+                                                </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                            {% endfor %}
+                              <!-- end row -->
 
                            <div class="row">
                                <div class="col-lg-12">
