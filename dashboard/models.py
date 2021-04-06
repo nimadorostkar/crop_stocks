@@ -54,7 +54,7 @@ class Notice(models.Model):
 class Ticket(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "کاربر")
     title = models.CharField(max_length=300,null=True, blank=True,verbose_name = " عنوان ")
-    descriptions = models.textField(max_length=300,null=True, blank=True,verbose_name = "توضیحات")
+    descriptions = models.TextField(max_length=300,null=True, blank=True,verbose_name = "توضیحات")
     CHOICES = ( ('A','Answered'), ('N','New') )
     status = models.CharField(max_length=1,choices=CHOICES,default='N',verbose_name = "وضعیت")
     updated_on = models.DateTimeField(auto_now= True)
