@@ -70,7 +70,7 @@ def payment(request):
             obj.user = payment_form.created_by=request.user
             obj.save()
             messages.success(request, _('Your Payment was successfully updated!'))
-            return redirect('/')
+            return redirect('/dashboard')
         else:
             messages.error(request, _('Please correct the error below.'))
     else:
@@ -98,7 +98,7 @@ def ticket(request):
             obj.user = ticket_form.created_by=request.user
             obj.save()
             messages.success(request, _('Your Payment was successfully updated!'))
-            return redirect('/')
+            return redirect('/dashboard')
         else:
             messages.error(request, _('Please correct the error below.'))
     else:
@@ -123,7 +123,7 @@ def money_req(request):
             obj.user = money_req_form.created_by=request.user
             obj.save()
             messages.success(request, _('Your Payment was successfully updated!'))
-            return redirect('/')
+            return redirect('/dashboard')
         else:
             messages.error(request, _('Please correct the error below.'))
     else:
