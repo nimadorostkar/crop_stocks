@@ -1,7 +1,7 @@
 from .models import Profile, Notice, Payment, Submitted_files, Ticket
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext_lazy as _
-from .forms import ProfileForm, UserForm, PaymentForm, TicketForm
+from .forms import ProfileForm, UserForm, PaymentForm, TicketForm, Money_reqForm
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render,redirect
 from django.contrib import messages
