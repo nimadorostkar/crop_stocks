@@ -54,6 +54,8 @@ class Money_req(models.Model):
     req_number = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     amount =  models.CharField(max_length=500,null=True, blank=True,verbose_name = "مقدار به تومان")
     descriptions = models.CharField(max_length=300,null=True, blank=True,verbose_name = "توضیحات")
+    CHOICES = ( ('🔴New','🔴New'), ('checked','checked') )
+    status = models.CharField(max_length=20,choices=CHOICES,default='🔴New',verbose_name = "وضعیت")
     updated_on = models.DateTimeField(auto_now= True)
     created_on = models.DateTimeField(auto_now_add=True)
 
