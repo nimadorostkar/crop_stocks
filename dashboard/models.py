@@ -51,7 +51,7 @@ class Notice(models.Model):
 #------------------------------------------------------------------------------
 class Ticket(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "کاربر")
-    #ticket_number = models.Charfield( max_length = 10, blank=True, editable=False, unique=True, default=create_new_ref_number() )
+    ticket_number = models.Charfield( max_length = 10, blank=True, editable=False, unique=True, default=create_new_ref_number() )
     title = models.CharField(max_length=300,null=True, blank=True,verbose_name = " عنوان ")
     descriptions = models.TextField(max_length=800,null=True, blank=True,verbose_name = "توضیحات")
     CHOICES1 = ( ('Ticket','Ticket'), ('Answered','Answered') )
