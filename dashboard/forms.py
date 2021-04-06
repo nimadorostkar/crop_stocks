@@ -1,7 +1,7 @@
 from django import forms
 from allauth.account.forms import SignupForm
 from django.contrib.auth.models import User
-from .models import Profile, Payment, Ticket
+from .models import Profile, Payment, Ticket, Money_req
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 
@@ -12,8 +12,6 @@ class Money_reqForm(forms.ModelForm):
 	class Meta:
 		model = Money_req
 		fields = ['amount','descriptions']
-
-
 
 
 
