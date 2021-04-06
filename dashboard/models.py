@@ -49,6 +49,35 @@ class Notice(models.Model):
 
 
 #------------------------------------------------------------------------------
+class Money_req(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "کاربر")
+    req_number = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    amount =  models.CharField(max_length=500,null=True, blank=True,verbose_name = "مقدار به تومان")
+    descriptions = models.CharField(max_length=300,null=True, blank=True,verbose_name = "توضیحات")
+    updated_on = models.DateTimeField(auto_now= True)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+
+    def user_name(self):
+          return str(self.user)
+
+    class Meta:
+        ordering = ['-created_on']
+
+    class Meta:
+        verbose_name = "درخواست پول"
+        verbose_name_plural = " درخواست های پول "
+
+    def __str__(self):
+        return str(self.created_on)
+
+
+
+
+
+
+
+#------------------------------------------------------------------------------
 class Ticket(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "کاربر")
     ticket_number = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
