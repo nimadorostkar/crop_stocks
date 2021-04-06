@@ -107,7 +107,6 @@ class Ticket(models.Model):
 
 
 
-
 #------------------------------------------------------------------------------
 class Payment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "کاربر")
