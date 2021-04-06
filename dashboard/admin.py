@@ -13,6 +13,8 @@ class NoticeAdmin(admin.ModelAdmin):
 	list_display = ('title', 'created_on')
 class Submitted_filesAdmin(admin.ModelAdmin):
 	list_display = ('title', 'created_on')
+class TicketAdmin(admin.ModelAdmin):
+	list_display = ('user_name', 'title','descriptions','created_on','status')
 class PaymentAdmin(admin.ModelAdmin):
 	list_display = ('user_name', 'image_tag','descriptions','created_on')
 class ProfileAdmin(admin.ModelAdmin):
@@ -22,6 +24,7 @@ class ProfileAdmin(admin.ModelAdmin):
 
 admin.site.register(models.Notice,NoticeAdmin)
 admin.site.register(models.Submitted_files,Submitted_filesAdmin)
+admin.site.register(models.Ticket,TicketAdmin)
 admin.site.register(models.Payment,PaymentAdmin)
 admin.site.register(models.Profile,ProfileAdmin)
 

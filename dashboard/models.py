@@ -37,7 +37,6 @@ class Notice(models.Model):
     updated_on = models.DateTimeField(auto_now= True)
     created_on = models.DateTimeField(auto_now_add=True)
 
-
     class Meta:
         ordering = ['-created_on']
 
@@ -47,6 +46,34 @@ class Notice(models.Model):
 
     def __str__(self):
         return self.title
+
+
+
+
+#------------------------------------------------------------------------------
+class Ticket(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "کاربر")
+    title = models.CharField(max_length=300,null=True, blank=True,verbose_name = " عنوان ")
+    descriptions = models.CharField(max_length=300,null=True, blank=True,verbose_name = "توضیحات")
+    CHOICES = ( ('A','Answered'), ('N','New') )
+    status = models.CharField(max_length=1,choices=CHOICES,verbose_name = "وضعیت")
+    updated_on = models.DateTimeField(auto_now= True)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+
+    def user_name(self):
+          return str(self.user)
+
+    class Meta:
+        ordering = ['-created_on']
+
+    class Meta:
+        verbose_name = "Ticket"
+        verbose_name_plural = " Tickets "
+
+    def __str__(self):
+        return str(self.created_on)
+
 
 
 
