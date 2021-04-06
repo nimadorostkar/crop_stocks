@@ -7,6 +7,16 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 
+#------------------------------------------------------------------------------
+class Money_reqForm(forms.ModelForm):
+	class Meta:
+		model = Money_req
+		fields = ['amount','descriptions']
+
+
+
+
+
 
 #------------------------------------------------------------------------------
 class TicketForm(forms.ModelForm):
