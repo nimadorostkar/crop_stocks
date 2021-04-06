@@ -48,15 +48,16 @@ class Notice(models.Model):
         return self.title
 
 
-
-
 #------------------------------------------------------------------------------
 class Ticket(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "کاربر")
     title = models.CharField(max_length=300,null=True, blank=True,verbose_name = " عنوان ")
-    descriptions = models.TextField(max_length=300,null=True, blank=True,verbose_name = "توضیحات")
-    CHOICES = ( ('A','Answered'), ('N','New') )
-    status = models.CharField(max_length=1,choices=CHOICES,default='N',verbose_name = "وضعیت")
+    descriptions = models.TextField(max_length=800,null=True, blank=True,verbose_name = "توضیحات")
+    CHOICES1 = ( ('New Ticket','New Ticket'), ('Answered','Answered') )
+    status = models.CharField(max_length=20,choices=CHOICES1,default='New Ticket',verbose_name = "وضعیت")
+
+    #CHOICES2 = ( ('🟢پاسخ',' 🟢پاسخ '), (' 🔴تیکت  ',' 🔴تیکت ') )
+    #status = models.CharField(max_length=20,choices=CHOICES2,default='🔴تیکت',verbose_name = "وضعیت")
     updated_on = models.DateTimeField(auto_now= True)
     created_on = models.DateTimeField(auto_now_add=True)
 
