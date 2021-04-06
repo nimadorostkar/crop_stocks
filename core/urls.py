@@ -8,7 +8,8 @@ urlpatterns = [
     path('grappelli/', include('grappelli.urls')), # Grappelli Admin URLS
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('', include('dashboard.urls')),
+    path('dashboard', include('dashboard.urls')),
+    path('', include('home.urls')),
 ]
 if settings.DEBUG:
     urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
