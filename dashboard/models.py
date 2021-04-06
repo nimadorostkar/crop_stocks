@@ -107,6 +107,7 @@ class Ticket(models.Model):
 
 
 
+'''
 #------------------------------------------------------------------------------
 class Payment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "کاربر")
@@ -127,7 +128,7 @@ class Payment(models.Model):
 
     def __str__(self):
         return str(self.created_on)
-
+'''
 
 
 #------------------------------------------------------------------------------
