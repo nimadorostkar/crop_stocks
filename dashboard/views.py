@@ -113,10 +113,10 @@ def ticket(request):
 @transaction.atomic
 def money_req(request):
     if request.method == 'POST':
-        money_req_form=TicketForm(request.POST, request.FILES, instance=request.user)
-        if ticket_form.is_valid():
-            obj = Ticket() #gets new object
-            obj.title = money_req_form.cleaned_data['title']
+        money_req_form=Money_reqForm(request.POST, request.FILES, instance=request.user)
+        if money_req_form.is_valid():
+            obj = Money_req() #gets new object
+            obj.amount = money_req_form.cleaned_data['amount']
             obj.descriptions = money_req_form.cleaned_data['descriptions']
             obj.user = money_req_form.created_by=request.user
             obj.save()
@@ -125,9 +125,9 @@ def money_req(request):
         else:
             messages.error(request, _('Please correct the error below.'))
     else:
-      money_req_form=TicketForm(request.POST, request.FILES, instance=request.user)
+      money_req_form=Money_reqForm(request.POST, request.FILES, instance=request.user)
       context = {'money_req_form': money_req_form }
-      return render(request, 'dashboard/ticket.html', context)
+      return render(request, 'dashboard/money_req.html', context)
 
 
 

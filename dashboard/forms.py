@@ -15,7 +15,6 @@ class Money_reqForm(forms.ModelForm):
 
 
 
-
 #------------------------------------------------------------------------------
 class TicketForm(forms.ModelForm):
 	class Meta:
