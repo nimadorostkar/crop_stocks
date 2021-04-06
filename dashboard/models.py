@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.utils.html import format_html
 from django.dispatch import receiver
 from django.db import models
-
+import uuid
 
 
 
@@ -51,7 +51,7 @@ class Notice(models.Model):
 #------------------------------------------------------------------------------
 class Ticket(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "کاربر")
-    ticket_number = models.Charfield( max_length = 10, blank=True, editable=False, unique=True, default=create_new_ref_number() )
+    ticket_number = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=300,null=True, blank=True,verbose_name = " عنوان ")
     descriptions = models.TextField(max_length=800,null=True, blank=True,verbose_name = "توضیحات")
     CHOICES1 = ( ('Ticket','Ticket'), ('Answered','Answered') )
@@ -60,7 +60,6 @@ class Ticket(models.Model):
     case = models.CharField(max_length=20,choices=CHOICES2,default='🔴New',verbose_name = "حالت")
     updated_on = models.DateTimeField(auto_now= True)
     created_on = models.DateTimeField(auto_now_add=True)
-
 
     def user_name(self):
           return str(self.user)
