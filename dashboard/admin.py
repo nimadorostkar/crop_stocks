@@ -14,7 +14,7 @@ class NoticeAdmin(admin.ModelAdmin):
 class Submitted_filesAdmin(admin.ModelAdmin):
 	list_display = ('title', 'created_on')
 class TicketAdmin(admin.ModelAdmin):
-	list_display = ('user_name', 'title','descriptions','created_on','status','case')
+	list_display = ('ticket_number' ,'user_name', 'title','descriptions','created_on','status','case')
 class PaymentAdmin(admin.ModelAdmin):
 	list_display = ('user_name', 'image_tag','descriptions','created_on')
 class ProfileAdmin(admin.ModelAdmin):
