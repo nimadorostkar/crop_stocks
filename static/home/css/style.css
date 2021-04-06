@@ -595,8 +595,8 @@ body .theme-button:hover span {opacity: 1;}
 .stock-market-price {padding-bottom: 50px;}
 .stock-market-price #market-rate {padding: 10px 15px;}
 .stock-market-price #market-rate .main-wrapper {
-  background: #00e5ff30;
-  box-shadow: 0px 3px 70px 0px rgba(187, 206, 233, 0.2);
+  background: #ffffff00;
+  box-shadow: 0px 3px 70px 0px rgba(255 255 255 / 0%);
   border-radius: 3px;
   padding: 30px 20px 30px 40px;
   position: relative;
