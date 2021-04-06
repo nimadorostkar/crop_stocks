@@ -11,7 +11,7 @@ from django.contrib.auth.forms import UserCreationForm
 #------------------------------------------------------------------------------
 class TicketForm(forms.ModelForm):
 	class Meta:
-		model = Payment
+		model = Ticket
 		fields = ['title','descriptions']
 
 
