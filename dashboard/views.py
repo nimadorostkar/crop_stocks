@@ -83,5 +83,33 @@ def payment(request):
 
 
 
+#------------------------------------------------------------------------------
+@login_required
+@transaction.atomic
+def ticket(request):
+    if request.method == 'POST':
+        ticket_form=TicketForm(request.POST, request.FILES, instance=request.user)
+        if ticket_form.is_valid():
+            obj = Ticket() #gets new object
+            obj.title = ticket_form.cleaned_data['title']
+            obj.descriptions = ticket_form.cleaned_data['descriptions']
+            obj.user = ticket_form.created_by=request.user
+            obj.save()
+            messages.success(request, _('Your Payment was successfully updated!'))
+            return redirect('/')
+        else:
+            messages.error(request, _('Please correct the error below.'))
+    else:
+      ticket_form=TicketForm(request.POST, request.FILES, instance=request.user)
+      context = {'ticket_form': ticket_form }
+      return render(request, 'dashboard/ticket.html', context)
+
+
+
+
+
+
+
+
 
 #--------------------------------- Views End ----------------------------------
