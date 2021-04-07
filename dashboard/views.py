@@ -135,6 +135,11 @@ def money_req(request):
 
 
 
+
+
+
+
+'''
 #------------------------------------------------------------------------------
 def to_bank(request, order_id):
     order = get_object_or_404(models.Order, id=order_id)
@@ -173,7 +178,7 @@ def callback(request):
             return HttpResponse('error ' + str(result.Status))
     else:
         return HttpResponse('error ')
-
+'''
 
 
 

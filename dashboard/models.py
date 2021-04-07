@@ -107,14 +107,17 @@ class Ticket(models.Model):
 
 
 
-'''
 #------------------------------------------------------------------------------
 class Payment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "کاربر")
     descriptions = models.CharField(max_length=300,null=True, blank=True,verbose_name = "توضیحات")
-    amount = models.CharField(max_length=300,null=True, blank=True,verbose_name = "مقدار")
+    photo=models.ImageField(upload_to='user_uploads/payments',default='user_uploads/payments/default.png',null=True, blank=True,verbose_name = " تصویر فیش بانکی")
     updated_on = models.DateTimeField(auto_now= True)
     created_on = models.DateTimeField(auto_now_add=True)
+
+
+    def image_tag(self):
+          return format_html("<img width=50 src='{}'>".format(self.photo.url))
 
     def user_name(self):
           return str(self.user)
@@ -128,7 +131,7 @@ class Payment(models.Model):
 
     def __str__(self):
         return str(self.created_on)
-'''
+
 
 
 #------------------------------------------------------------------------------
@@ -179,7 +182,7 @@ class Profile(models.Model):
 
 
 
-
+'''
 class Order(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "کاربر")
     order_date = models.DateTimeField(auto_now_add=True)
@@ -210,7 +213,7 @@ class Transaction(models.Model):
 
     def __str__(self):
         return str(self.id)
-
+'''
 
 
 
