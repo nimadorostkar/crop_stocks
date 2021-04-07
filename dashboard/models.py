@@ -112,7 +112,7 @@ class Ticket(models.Model):
 #------------------------------------------------------------------------------
 class Stock(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "کاربر")
-    value = models.IntegerField(max_length=100,default='200000', blank=True,verbose_name = "ارزش")
+    value = models.IntegerField(default='200000', blank=True,verbose_name = "ارزش")
     quantity = models.IntegerField(default='1', blank=True,verbose_name = "تعداد")
     updated_on = models.DateTimeField(auto_now= True)
     created_on = models.DateTimeField(auto_now_add=True)
