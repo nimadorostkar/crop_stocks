@@ -21,6 +21,7 @@ import random
 def dashboard(request):
   profile = models.Profile.objects.filter(user=request.user)
   notices = models.Notice.objects.filter(user=request.user).order_by('-created_on')
+  stock = models.Stock.objects.filter(user=request.user).order_by('-created_on')
   #payment = models.Payment.objects.filter(user=request.user).order_by('-created_on')
   ticket = models.Ticket.objects.filter(user=request.user).order_by('-created_on')
   money_req = models.Money_req.objects.filter(user=request.user).order_by('-created_on')
@@ -33,7 +34,14 @@ def dashboard(request):
             user_form.save()
             profile_form.save()
             messages.success(request, _('Your profile was successfully updated!'))
-            context = {'profile': profile,'notices': notices,'ticket': ticket ,'money_req': money_req,'submitted_files':submitted_files, 'user_form': user_form,'profile_form': profile_form }
+            context = {'profile': profile,
+            'notices': notices,
+            'ticket': ticket,
+            'money_req': money_req,
+            'submitted_files':submitted_files,
+            'user_form': user_form,
+            'profile_form': profile_form,
+            'stock':stock }
             return render(request, 'dashboard/dashboard.html', context)
         else:
             messages.error(request, _('Please correct the error below.'))
@@ -48,7 +56,8 @@ def dashboard(request):
   'money_req': money_req,
   'user_form': user_form,
   'submitted_files':submitted_files,
-  'profile_form': profile_form }
+  'profile_form': profile_form,
+  'stock':stock }
   return render(request, 'dashboard/dashboard.html', context)
 
 
