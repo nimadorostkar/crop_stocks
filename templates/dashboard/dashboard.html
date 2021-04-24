@@ -310,13 +310,13 @@
                                           <div>
                                             <dl>
                                               <dt style="color:#f56f11;"> <small> نام کاربری </small> </dt>
-                                              <dd style="text-align:center"> {{ user.username }} </dd>
+                                              <dd style="text-align:center"> {{ user.username|default_if_none:"&nbsp;" }} </dd>
                                               <dt style="color:#f56f11;"><small> نام </small> </dt>
-                                              <dd style="text-align:center"> {{ user.first_name }} </dd>
+                                              <dd style="text-align:center"> {{ user.first_name|default_if_none:"&nbsp;" }} </dd>
                                               <dt style="color:#f56f11;"> <small> نام خانوادگی</small> </dt>
-                                              <dd style="text-align:center"> {{ user.last_name }} </dd>
+                                              <dd style="text-align:center"> {{ user.last_name|default_if_none:"&nbsp;" }} </dd>
                                               <dt style="color:#f56f11;"> <small> نام پدر </small> </dt>
-                                              <dd style="text-align:center"> {{ user.profile.father_name }} </dd>
+                                              <dd style="text-align:center"> {{ user.profile.father_name|default_if_none:"&nbsp;" }} </dd>
                                             </dl>
                                           </div>
                                       </div>
@@ -328,13 +328,13 @@
                                           <div>
                                             <dl>
                                               <dt style="color:#f56f11;"> <small> E-mail </small> </dt>
-                                              <dd style="text-align:center"> {{ user.email }} </dd>
+                                              <dd style="text-align:center"> {{ user.email|default_if_none:"&nbsp;" }} </dd>
                                               <dt style="color:#f56f11;"><small> شماره شناسنامه </small> </dt>
-                                              <dd style="text-align:center"> {{ user.profile.identity_number }} </dd>
+                                              <dd style="text-align:center"> {{ user.profile.identity_number|default_if_none:"&nbsp;" }} </dd>
                                               <dt style="color:#f56f11;"> <small> کد ملی </small> </dt>
-                                              <dd style="text-align:center"> {{ user.profile.national_code }} </dd>
+                                              <dd style="text-align:center"> {{ user.profile.national_code|default_if_none:"&nbsp;" }} </dd>
                                               <dt style="color:#f56f11;"> <small>  شماره تماس  </small> </dt>
-                                              <dd style="text-align:center"> {{ user.profile.phone }} </dd>
+                                              <dd style="text-align:center"> {{ user.profile.phone|default_if_none:"&nbsp;" }} </dd>
                                             </dl>
                                           </div>
                                       </div>
@@ -346,13 +346,13 @@
                                           <div>
                                             <dl>
                                               <dt style="color:#f56f11;"> <small> آدرس </small> </dt>
-                                              <dd style="text-align:center"> {{ user.profile.address }} </dd>
+                                              <dd style="text-align:center"> {{ user.profile.address|default_if_none:"&nbsp;" }} </dd>
                                               <dt style="color:#f56f11;"><small>  نام بانک  </small> </dt>
-                                              <dd style="text-align:center"> {{ user.profile.bank_name }} </dd>
+                                              <dd style="text-align:center"> {{ user.profile.bank_name|default_if_none:"&nbsp;" }} </dd>
                                               <dt style="color:#f56f11;"> <small> نام صاحب حساب </small> </dt>
-                                              <dd style="text-align:center"> {{ user.profile.account_holder }} </dd>
+                                              <dd style="text-align:center"> {{ user.profile.account_holder|default_if_none:"&nbsp;" }} </dd>
                                               <dt style="color:#f56f11;"> <small> شماره کارت </small> </dt>
-                                              <dd style="text-align:center"> {{ user.profile.cardـnumber }} </dd>
+                                              <dd style="text-align:center"> {{ user.profile.cardـnumber|default_if_none:"&nbsp;" }} </dd>
                                             </dl>
                                           </div>
                                       </div>
