@@ -112,7 +112,7 @@ class Ticket(models.Model):
 #------------------------------------------------------------------------------
 class Stock(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "کاربر")
-    value = models.IntegerField(default='200000', blank=True,verbose_name = "ارزش")
+    #value = models.IntegerField(default='200000', blank=True,verbose_name = "ارزش")
     quantity = models.IntegerField(default='1', blank=True,verbose_name = "تعداد")
     updated_on = models.DateTimeField(auto_now= True)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -141,14 +141,10 @@ class Stock(models.Model):
 #------------------------------------------------------------------------------
 class Payment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "کاربر")
-    descriptions = models.CharField(max_length=300,null=True, blank=True,verbose_name = "توضیحات")
-    photo=models.ImageField(upload_to='user_uploads/payments',default='user_uploads/payments/default.png',null=True, blank=True,verbose_name = " تصویر فیش بانکی")
     updated_on = models.DateTimeField(auto_now= True)
     created_on = models.DateTimeField(auto_now_add=True)
 
 
-    def image_tag(self):
-          return format_html("<img width=50 src='{}'>".format(self.photo.url))
 
     def user_name(self):
           return str(self.user)
