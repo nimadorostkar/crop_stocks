@@ -33,7 +33,7 @@ admin.site.register(models.Submitted_files,Submitted_filesAdmin)
 admin.site.register(models.Ticket,TicketAdmin)
 admin.site.register(models.Money_req,Money_reqAdmin)
 admin.site.register(models.Stock,StockAdmin)
-admin.site.register(models.Payment,PaymentAdmin)
+#admin.site.register(models.Payment,PaymentAdmin)
 admin.site.register(models.Profile,ProfileAdmin)
 
 admin.site.register(LogEntry)
