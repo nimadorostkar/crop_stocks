@@ -1,4 +1,4 @@
-from .models import Profile, Notice, Payment, Submitted_files, Ticket, Money_req, Stock
+from .models import Profile, Notice, Submitted_files, Ticket, Money_req, Stock
 from django.contrib.admin.models import LogEntry
 from django.contrib import admin
 from . import models
@@ -17,8 +17,10 @@ class TicketAdmin(admin.ModelAdmin):
 	list_display = ('ticket_number' ,'user_name', 'title','descriptions','created_on','status','case')
 class StockAdmin(admin.ModelAdmin):
 	list_display = ('user_name', 'total_price','created_on')
+'''
 class PaymentAdmin(admin.ModelAdmin):
 	list_display = ('user_name', 'image_tag','descriptions','created_on')
+'''
 class Money_reqAdmin(admin.ModelAdmin):
 	list_display = ('user_name', 'req_number','descriptions','amount','created_on','status')
 class ProfileAdmin(admin.ModelAdmin):

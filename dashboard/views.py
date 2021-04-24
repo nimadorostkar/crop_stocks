@@ -1,7 +1,7 @@
-from .models import Profile, Notice, Payment, Submitted_files, Ticket, Money_req
+from .models import Profile, Notice, Submitted_files, Ticket, Money_req
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext_lazy as _
-from .forms import ProfileForm, UserForm, PaymentForm, TicketForm, Money_reqForm
+from .forms import ProfileForm, UserForm, TicketForm, Money_reqForm
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render,redirect
 from django.contrib import messages
@@ -21,7 +21,7 @@ import random
 def dashboard(request):
   profile = models.Profile.objects.filter(user=request.user)
   notices = models.Notice.objects.filter(user=request.user).order_by('-created_on')
-  payment = models.Payment.objects.filter(user=request.user).order_by('-created_on')
+  #payment = models.Payment.objects.filter(user=request.user).order_by('-created_on')
   ticket = models.Ticket.objects.filter(user=request.user).order_by('-created_on')
   money_req = models.Money_req.objects.filter(user=request.user).order_by('-created_on')
   submitted_files = models.Submitted_files.objects.filter(user=request.user).order_by('-created_on')
@@ -33,7 +33,7 @@ def dashboard(request):
             user_form.save()
             profile_form.save()
             messages.success(request, _('Your profile was successfully updated!'))
-            context = {'profile': profile,'notices': notices,'payment': payment,'ticket': ticket ,'money_req': money_req,'submitted_files':submitted_files, 'user_form': user_form,'profile_form': profile_form }
+            context = {'profile': profile,'notices': notices,'ticket': ticket ,'money_req': money_req,'submitted_files':submitted_files, 'user_form': user_form,'profile_form': profile_form }
             return render(request, 'dashboard/dashboard.html', context)
         else:
             messages.error(request, _('Please correct the error below.'))
@@ -44,7 +44,6 @@ def dashboard(request):
   context = {
   'profile': profile,
   'notices': notices,
-  'payment': payment,
   'ticket': ticket,
   'money_req': money_req,
   'user_form': user_form,
@@ -58,6 +57,7 @@ def dashboard(request):
 
 
 #------------------------------------------------------------------------------
+'''
 @login_required
 @transaction.atomic
 def payment(request):
@@ -78,7 +78,7 @@ def payment(request):
       context = {'payment_form': payment_form }
       return render(request, 'dashboard/payment.html', context)
 
-
+'''
 
 
 

@@ -139,6 +139,7 @@ class Stock(models.Model):
 
 
 #------------------------------------------------------------------------------
+'''
 class Payment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "کاربر")
     updated_on = models.DateTimeField(auto_now= True)
@@ -158,7 +159,7 @@ class Payment(models.Model):
 
     def __str__(self):
         return str(self.created_on)
-
+'''
 
 
 #------------------------------------------------------------------------------
