@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     # Third Party - 1) All Auth
     'allauth',
     'allauth.account',
+    'bootstrapform',
 ]
 
 

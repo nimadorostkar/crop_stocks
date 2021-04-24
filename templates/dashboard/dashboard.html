@@ -1,5 +1,7 @@
 {% load static %}
 <!doctype html>
+{% load bootstrap %}
+
 <html lang="en">
 
 <!-- Mirrored from themesbrand.com/minible/layouts/horizontal/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Jan 2021 11:50:25 GMT -->
@@ -424,8 +426,8 @@
                                                         <div style="text-align:right; direction:rtl" class="modal-body">
                                                              <form method="post" enctype="multipart/form-data">
                                                                   {% csrf_token %}
-                                                                  {{ user_form.as_p }}
-                                                                  {{ profile_form.as_p }}
+                                                                  {{ user_form|bootstrap }}
+                                                                  {{ profile_form|bootstrap }}
                                                                   <div class="row mt-4 justify-content-center">
                                                                       <button type="submit" class="btn btn-primary w-md"> ذخیره </button>
                                                                   </div>
