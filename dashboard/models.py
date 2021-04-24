@@ -132,7 +132,7 @@ class Stock(models.Model):
         return str(self.created_on)
 
     def total_price(self):
-          return str((self.value)*(self.quantity))
+          return str((200)*(self.quantity))
 
 
 
