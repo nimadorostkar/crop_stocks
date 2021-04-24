@@ -22,7 +22,6 @@ def dashboard(request):
   profile = models.Profile.objects.filter(user=request.user)
   notices = models.Notice.objects.filter(user=request.user).order_by('-created_on')
   stock = models.Stock.objects.filter(user=request.user).order_by('-created_on')
-  total = sum(stock)
   #payment = models.Payment.objects.filter(user=request.user).order_by('-created_on')
   ticket = models.Ticket.objects.filter(user=request.user).order_by('-created_on')
   money_req = models.Money_req.objects.filter(user=request.user).order_by('-created_on')
