@@ -16,8 +16,8 @@ class User_status(models.Model):
     fee = models.CharField(max_length=200,null=True,default='0', blank=True,verbose_name = "سرمایه شما")
 
     class Meta:
-        verbose_name = "سرمایه"
-        verbose_name_plural = " سرمایه ها "
+        verbose_name = "سهم کاربر"
+        verbose_name_plural = " سهم کاربران "
 
     def user_name(self):
           return str(self.user)
