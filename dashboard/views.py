@@ -1,4 +1,4 @@
-from .models import Profile, Notice, Submitted_files, Ticket, Money_req, Stock
+from .models import Profile, Notice, Submitted_files, Ticket, Money_req, Stock, User_status
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext_lazy as _
 from .forms import ProfileForm, UserForm, TicketForm, Money_reqForm, StockForm
@@ -22,6 +22,7 @@ def dashboard(request):
   profile = models.Profile.objects.filter(user=request.user)
   notices = models.Notice.objects.filter(user=request.user).order_by('-created_on')
   stock = models.Stock.objects.filter(user=request.user).order_by('-created_on')
+  user_status = models.User_status.objects.filter(user=request.user)
   #payment = models.Payment.objects.filter(user=request.user).order_by('-created_on')
   ticket = models.Ticket.objects.filter(user=request.user).order_by('-created_on')
   money_req = models.Money_req.objects.filter(user=request.user).order_by('-created_on')
@@ -41,7 +42,8 @@ def dashboard(request):
             'submitted_files':submitted_files,
             'user_form': user_form,
             'profile_form': profile_form,
-            'stock':stock }
+            'stock':stock,
+            'user_status':user_status }
             return render(request, 'dashboard/dashboard.html', context)
         else:
             messages.error(request, _('Please correct the error below.'))
@@ -57,7 +59,8 @@ def dashboard(request):
   'user_form': user_form,
   'submitted_files':submitted_files,
   'profile_form': profile_form,
-  'stock':stock }
+  'stock':stock,
+  'user_status':user_status }
   return render(request, 'dashboard/dashboard.html', context)
 
 
