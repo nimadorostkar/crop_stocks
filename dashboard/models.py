@@ -9,7 +9,6 @@ import uuid
 
 
 
-
 #------------------------------------------------------------------------------
 class User_status(models.Model):
     user = models.ManyToManyField(User)
@@ -21,8 +20,6 @@ class User_status(models.Model):
 
     def user_name(self):
           return str(self.user)
-
-
 
 
 
