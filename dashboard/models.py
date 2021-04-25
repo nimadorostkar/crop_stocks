@@ -8,6 +8,25 @@ import uuid
 
 
 
+
+
+#------------------------------------------------------------------------------
+class User_status(models.Model):
+    user = models.ManyToManyField(User)
+    fee = models.CharField(max_length=200,null=True, blank=True,verbose_name = "سرمایه شما")
+
+    class Meta:
+        verbose_name = "سرمایه"
+        verbose_name_plural = " سرمایه ها "
+
+    def user_name(self):
+          return str(self.user)
+
+
+
+
+
+
 #------------------------------------------------------------------------------
 class Submitted_files(models.Model):
     user = models.ManyToManyField(User)
