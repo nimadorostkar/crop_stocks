@@ -1,5 +1,7 @@
 {% load static %}
 <!doctype html>
+{% load bootstrap %}
+
 <html lang="en">
 
 <!-- Mirrored from themesbrand.com/minible/layouts/horizontal/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Jan 2021 11:50:25 GMT -->
@@ -171,11 +173,23 @@
                             </div>
                             <!-- end page title -->
 
-                              <br><br>
-                              <h1 style="text-align:center"> salaaaaaaaaaaamm </h1>
-                              <h4 style="text-align:center"> alan 620 hezar timan to hesabet dari </h4>
-
-
+                            <br>
+                          {% for User_status in user_status %}
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                             <h4 style="text-align:center; direction:rtl" class="card-title mb-4">
+                                               {{ user.username }} عزیز با تشکر از مشارکت شما موجودی فعلی شما {{ User_status.fee }} تومان است.
+                                             <div class="table-responsive">
+                                                <p  style="text-align:center; direction:rtl"> <small> چنانچه بعد از پرداخت هنوز سهم خریداری شده شما تغییر نکرده شکیبایی کنید. بعد از برسی تغیرات اعمال میشود </small> </p>
+                                              </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          {% endfor %}
+                            <!-- end row -->
                         </div> <!-- container-fluid -->
                     </div>
                     <!-- End Page-content -->
@@ -310,13 +324,13 @@
                                           <div>
                                             <dl>
                                               <dt style="color:#f56f11;"> <small> نام کاربری </small> </dt>
-                                              <dd style="text-align:center"> {{ user.username }} </dd>
+                                              <dd style="text-align:center"> {{ user.username|default_if_none:"&nbsp;" }} </dd>
                                               <dt style="color:#f56f11;"><small> نام </small> </dt>
-                                              <dd style="text-align:center"> {{ user.first_name }} </dd>
+                                              <dd style="text-align:center"> {{ user.first_name|default_if_none:"&nbsp;" }} </dd>
                                               <dt style="color:#f56f11;"> <small> نام خانوادگی</small> </dt>
-                                              <dd style="text-align:center"> {{ user.last_name }} </dd>
+                                              <dd style="text-align:center"> {{ user.last_name|default_if_none:"&nbsp;" }} </dd>
                                               <dt style="color:#f56f11;"> <small> نام پدر </small> </dt>
-                                              <dd style="text-align:center"> {{ user.profile.father_name }} </dd>
+                                              <dd style="text-align:center"> {{ user.profile.father_name|default_if_none:"&nbsp;" }} </dd>
                                             </dl>
                                           </div>
                                       </div>
@@ -328,13 +342,13 @@
                                           <div>
                                             <dl>
                                               <dt style="color:#f56f11;"> <small> E-mail </small> </dt>
-                                              <dd style="text-align:center"> {{ user.email }} </dd>
+                                              <dd style="text-align:center"> {{ user.email|default_if_none:"&nbsp;" }} </dd>
                                               <dt style="color:#f56f11;"><small> شماره شناسنامه </small> </dt>
-                                              <dd style="text-align:center"> {{ user.profile.identity_number }} </dd>
+                                              <dd style="text-align:center"> {{ user.profile.identity_number|default_if_none:"&nbsp;" }} </dd>
                                               <dt style="color:#f56f11;"> <small> کد ملی </small> </dt>
-                                              <dd style="text-align:center"> {{ user.profile.national_code }} </dd>
+                                              <dd style="text-align:center"> {{ user.profile.national_code|default_if_none:"&nbsp;" }} </dd>
                                               <dt style="color:#f56f11;"> <small>  شماره تماس  </small> </dt>
-                                              <dd style="text-align:center"> {{ user.profile.phone }} </dd>
+                                              <dd style="text-align:center"> {{ user.profile.phone|default_if_none:"&nbsp;" }} </dd>
                                             </dl>
                                           </div>
                                       </div>
@@ -346,13 +360,13 @@
                                           <div>
                                             <dl>
                                               <dt style="color:#f56f11;"> <small> آدرس </small> </dt>
-                                              <dd style="text-align:center"> {{ user.profile.address }} </dd>
+                                              <dd style="text-align:center"> {{ user.profile.address|default_if_none:"&nbsp;" }} </dd>
                                               <dt style="color:#f56f11;"><small>  نام بانک  </small> </dt>
-                                              <dd style="text-align:center"> {{ user.profile.bank_name }} </dd>
+                                              <dd style="text-align:center"> {{ user.profile.bank_name|default_if_none:"&nbsp;" }} </dd>
                                               <dt style="color:#f56f11;"> <small> نام صاحب حساب </small> </dt>
-                                              <dd style="text-align:center"> {{ user.profile.account_holder }} </dd>
+                                              <dd style="text-align:center"> {{ user.profile.account_holder|default_if_none:"&nbsp;" }} </dd>
                                               <dt style="color:#f56f11;"> <small> شماره کارت </small> </dt>
-                                              <dd style="text-align:center"> {{ user.profile.cardـnumber }} </dd>
+                                              <dd style="text-align:center"> {{ user.profile.cardـnumber|default_if_none:"&nbsp;" }} </dd>
                                             </dl>
                                           </div>
                                       </div>
@@ -413,8 +427,8 @@
                                                         <div style="text-align:right; direction:rtl" class="modal-body">
                                                              <form method="post" enctype="multipart/form-data">
                                                                   {% csrf_token %}
-                                                                  {{ user_form.as_p }}
-                                                                  {{ profile_form.as_p }}
+                                                                  {{ user_form|bootstrap }}
+                                                                  {{ profile_form|bootstrap }}
                                                                   <div class="row mt-4 justify-content-center">
                                                                       <button type="submit" class="btn btn-primary w-md"> ذخیره </button>
                                                                   </div>
@@ -479,7 +493,7 @@
                             <!-- end page title -->
 
 
-
+                      <!--
                               <div class="row">
                                 {% for Payment in payment %}
                                   <div class="col-md-4 col-sm-12">
@@ -494,13 +508,14 @@
                                   </div>
                                 {% endfor %}
                              </div> <!-- end row-->
+                        -->
 
 
                              <div class="row">
                                  <div class="col-lg-12">
                                      <div class="card">
                                          <div class="card-body">
-                                           <a class="btn btn-success btn-block" href="{% url 'payment' %}" target="_blank"> <i class="fa fa-plus"></i> &nbsp; بارگذاری فیش پرداخت </a>
+                                           <a class="btn btn-success btn-block" href="#" target="_blank"> <i class="fa fa-plus"></i> &nbsp; بارگذاری فیش پرداخت </a>
                                          </div>
                                      </div>
                                  </div>

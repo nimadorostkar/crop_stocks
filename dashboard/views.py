@@ -1,7 +1,7 @@
-from .models import Profile, Notice, Payment, Submitted_files, Ticket, Money_req
+from .models import Profile, Notice, Submitted_files, Ticket, Money_req, Stock, User_status
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext_lazy as _
-from .forms import ProfileForm, UserForm, PaymentForm, TicketForm, Money_reqForm
+from .forms import ProfileForm, UserForm, TicketForm, Money_reqForm, StockForm
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render,redirect
 from django.contrib import messages
@@ -21,7 +21,9 @@ import random
 def dashboard(request):
   profile = models.Profile.objects.filter(user=request.user)
   notices = models.Notice.objects.filter(user=request.user).order_by('-created_on')
-  payment = models.Payment.objects.filter(user=request.user).order_by('-created_on')
+  stock = models.Stock.objects.filter(user=request.user).order_by('-created_on')
+  user_status = models.User_status.objects.filter(user=request.user)
+  #payment = models.Payment.objects.filter(user=request.user).order_by('-created_on')
   ticket = models.Ticket.objects.filter(user=request.user).order_by('-created_on')
   money_req = models.Money_req.objects.filter(user=request.user).order_by('-created_on')
   submitted_files = models.Submitted_files.objects.filter(user=request.user).order_by('-created_on')
@@ -33,7 +35,15 @@ def dashboard(request):
             user_form.save()
             profile_form.save()
             messages.success(request, _('Your profile was successfully updated!'))
-            context = {'profile': profile,'notices': notices,'payment': payment,'ticket': ticket ,'money_req': money_req,'submitted_files':submitted_files, 'user_form': user_form,'profile_form': profile_form }
+            context = {'profile': profile,
+            'notices': notices,
+            'ticket': ticket,
+            'money_req': money_req,
+            'submitted_files':submitted_files,
+            'user_form': user_form,
+            'profile_form': profile_form,
+            'stock':stock,
+            'user_status':user_status }
             return render(request, 'dashboard/dashboard.html', context)
         else:
             messages.error(request, _('Please correct the error below.'))
@@ -44,12 +54,13 @@ def dashboard(request):
   context = {
   'profile': profile,
   'notices': notices,
-  'payment': payment,
   'ticket': ticket,
   'money_req': money_req,
   'user_form': user_form,
   'submitted_files':submitted_files,
-  'profile_form': profile_form }
+  'profile_form': profile_form,
+  'stock':stock,
+  'user_status':user_status }
   return render(request, 'dashboard/dashboard.html', context)
 
 
@@ -58,6 +69,7 @@ def dashboard(request):
 
 
 #------------------------------------------------------------------------------
+'''
 @login_required
 @transaction.atomic
 def payment(request):
@@ -78,7 +90,7 @@ def payment(request):
       context = {'payment_form': payment_form }
       return render(request, 'dashboard/payment.html', context)
 
-
+'''
 
 
 
@@ -134,6 +146,51 @@ def money_req(request):
 
 
 
+
+
+
+
+
+'''
+#------------------------------------------------------------------------------
+def to_bank(request, order_id):
+    order = get_object_or_404(models.Order, id=order_id)
+    amount = 1000
+    order_items = models.OrderItem.objects.filter(order=order)
+    for item in order_items:
+        amount += item.product_cost
+    callbackUrl = 'http://127.0.0.1:8000/callback/'
+    mobile = ''
+    email = ''
+    description = 'Test'
+    result = client.service.PaymentRequest(merchant, amount, description, email, mobile, callbackUrl)
+
+    if result.Status == 100 and len(result.Authority) == 36:
+        models.Invoice.objects.create(order=order,
+                                      authority=result.Authority)
+        return redirect('https://www.zarinpal.com/pg/StartPay/' + result.Authority)
+    else:
+        return HttpResponse('Error code ' + str(result.Status))
+
+
+
+def callback(request):
+    if request.GET.get('Status') == 'OK':
+        authority = request.GET.get('Authority')
+        invoice = get_object_or_404(models.Invoice, authority=authority)
+        amount = 0
+        order = invoice.order
+        order_items = models.OrderItem.objects.filter(order=order)
+        for item in order_items:
+            amount += item.product_cost
+        result = client.service.PaymentVerification(merchant, authority, amount)
+        if result.Status == 100:
+            return render(request, 'callback.html', {'invoice': invoice})
+        else:
+            return HttpResponse('error ' + str(result.Status))
+    else:
+        return HttpResponse('error ')
+'''
 
 
 

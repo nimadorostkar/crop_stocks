@@ -1,7 +1,7 @@
 from django import forms
 from allauth.account.forms import SignupForm
 from django.contrib.auth.models import User
-from .models import Profile, Payment, Ticket, Money_req
+from .models import Profile, Ticket, Money_req, Stock
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 
@@ -24,11 +24,10 @@ class TicketForm(forms.ModelForm):
 
 
 #------------------------------------------------------------------------------
-class PaymentForm(forms.ModelForm):
+class StockForm(forms.ModelForm):
 	class Meta:
-		model = Payment
-		fields = ['descriptions', 'photo']
-
+		model = Stock
+		fields = ['quantity']
 
 
 #------------------------------------------------------------------------------

@@ -8,6 +8,25 @@ import uuid
 
 
 
+
+
+#------------------------------------------------------------------------------
+class User_status(models.Model):
+    user = models.ManyToManyField(User)
+    fee = models.CharField(max_length=200,null=True,default='0', blank=True,verbose_name = "سرمایه شما")
+
+    class Meta:
+        verbose_name = "سهم کاربر"
+        verbose_name_plural = " سهم کاربران "
+
+    def user_name(self):
+          return str(self.user)
+
+
+
+
+
+
 #------------------------------------------------------------------------------
 class Submitted_files(models.Model):
     user = models.ManyToManyField(User)
@@ -108,17 +127,44 @@ class Ticket(models.Model):
 
 
 
+
 #------------------------------------------------------------------------------
-class Payment(models.Model):
+class Stock(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "کاربر")
-    descriptions = models.CharField(max_length=300,null=True, blank=True,verbose_name = "توضیحات")
-    photo=models.ImageField(upload_to='user_uploads/payments',default='user_uploads/payments/default.png',null=True, blank=True,verbose_name = " تصویر فیش بانکی")
+    #value = models.IntegerField(default='200000', blank=True,verbose_name = "ارزش")
+    quantity = models.IntegerField(default='1', blank=True,verbose_name = "تعداد")
     updated_on = models.DateTimeField(auto_now= True)
     created_on = models.DateTimeField(auto_now_add=True)
 
 
-    def image_tag(self):
-          return format_html("<img width=50 src='{}'>".format(self.photo.url))
+    def user_name(self):
+          return str(self.user)
+
+    class Meta:
+        ordering = ['-created_on']
+
+    class Meta:
+        verbose_name = "سهم"
+        verbose_name_plural = "سهام"
+
+    def __str__(self):
+        return str(self.created_on)
+
+    def total_price(self):
+          return str((200)*(self.quantity))
+
+
+
+
+
+#------------------------------------------------------------------------------
+'''
+class Payment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "کاربر")
+    updated_on = models.DateTimeField(auto_now= True)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+
 
     def user_name(self):
           return str(self.user)
@@ -132,7 +178,7 @@ class Payment(models.Model):
 
     def __str__(self):
         return str(self.created_on)
-
+'''
 
 
 #------------------------------------------------------------------------------
@@ -183,6 +229,38 @@ class Profile(models.Model):
 
 
 
+'''
+class Order(models.Model):
+    customer = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "کاربر")
+    order_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.id)
+
+
+class Invoice(models.Model):
+    order = models.ForeignKey(Order, null=True, on_delete=models.SET_NULL)
+    invoice_date = models.DateTimeField(auto_now_add=True)
+    authority = models.CharField(max_length=200, blank=True, null=True)
+
+    def __str__(self):
+        return str(self.id)
+
+
+class Transaction(models.Model):
+    STATUS_CHOICES = (
+        ('pending', 'Pending'),
+        ('failed', 'Failed'),
+        ('completed', 'Completed')
+    )
+    invoice = models.ForeignKey(Invoice, null=True, on_delete=models.SET_NULL)
+    transaction_date = models.DateTimeField(auto_now_add=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=0)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
+
+    def __str__(self):
+        return str(self.id)
+'''
 
 
 
